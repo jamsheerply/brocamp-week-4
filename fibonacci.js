@@ -1,7 +1,10 @@
- function fibno(n){
-  if(n<2){
-    return n
+function fibonacci(n){
+  const fib =[0,1]
+  for(i=2;i<n;i++){
+fib[i]=fib[i-1]+fib[i-2]
   }
-  return fibno(n-1)+fibno(n-2);
- }
- console.log(fibno(7));
+  return fib
+}
+console.log(fibonacci(5));
+
+// Big-o=o(n)

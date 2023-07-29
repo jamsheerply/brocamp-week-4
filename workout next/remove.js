@@ -57,9 +57,7 @@ class LinkedList{
         }
       }
       console.log(str)
-
     }
-}
 const li=new LinkedList()
 li.index(10,0)
 li.index(20,1)

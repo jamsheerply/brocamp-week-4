@@ -6,11 +6,11 @@ class Node{
 }
 class LinkedList{
   constructor(){
-    this.head=null;
-  this.size=0;  
+    this.head=null
+    this.size=0
   }
   prepend(val){
-    const node=new Node(val)
+    const node =new Node(val)
     if(this.head==null){
       this.head=node
     }else{
@@ -20,54 +20,69 @@ class LinkedList{
     this.size++
   }
   append(val){
-    const node =new Node(val)
+    const node=new Node(val)
     if(this.head==null){
       this.head=node;
     }else{
       let curr=this.head;
       while(curr.next!==null){
-        curr=curr.next;
+        curr=curr.next
       }
-      curr.next=node;
+      curr.next=node
     }
-    this.size++;
+    this.size++
   }
   insert(val,index){
-    const node=new Node(val)
+    const node=new Node(val);
     if(index<0||index>this.size)
     return console.log("invalid entry")
     if(index==0){
-    node.next=this.head;
-    this.head=node
+      node.next=this.head;
+      this.head=node; 
     }else{
-      let curr=this.head;
+      let curr=this.head,prev;
+      for(let i=0;i<index;i++){
+        prev=curr;
+        curr=curr.next
+      }
+      node.next=curr;
+      prev.next=node
+    }
+    this.size++
+  }
+  remove(index){
+    if(index<0||index>this.size)
+    return console.log("invalid")
+    if(index==0){
+      this.head=this.head.next;
+    }else{
+      let curr=this.head
       let prev;
       for(let i=0;i<index;i++){
         prev=curr;
         curr=curr.next;
       }
-      node.next=curr;
-      prev.next=node
-
+      prev.next=curr.next;
     }
-    this.size++
+    this.size--
   }
   print(){
     let curr=this.head;
     let str=""
     while(curr!==null){
-      str+=curr.value+"->";
+      str+=curr.value+"->"
       curr=curr.next;
     }
     console.log(str)
   }
 }
-const li=new LinkedList()
+const li=new LinkedList();
 li.prepend(10)
-li.prepend(200)
+li.prepend(20)
 li.prepend(30)
+li.append(40)
+li.append(50)
+li.insert(100,1)
 li.print()
-li.append(30)
-li.print()
-li.insert(100,3)
-li.print()
+li.remove(6)
+li.print();
